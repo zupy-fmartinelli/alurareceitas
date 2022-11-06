@@ -4,3 +4,7 @@ from django.shortcuts import render
 def index(request):
     # return HttpResponse('<h1>Receitas</h1> <h2>Bem Vindo</h2>')
     return render(request, "index.html")
+
+def receita(request):
+    return render(request, "receita.html")
+    
