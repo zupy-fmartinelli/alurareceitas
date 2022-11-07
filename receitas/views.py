@@ -9,7 +9,7 @@ def index(request):
     # return HttpResponse('<h1>Receitas</h1> <h2>Bem Vindo</h2>')
 
     # traz todos os objetos do banco de dados
-    receitas = Receita.objects.filter(publicada=True)
+    receitas = Receita.objects.order_by('-date_receita').filter(publicada=True)
     
     dados = {
         'receitas' : receitas
