@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from receitas.models import Receita
 
 # Create your views here.
@@ -20,6 +20,7 @@ def cadastro(request):
             return redirect('cadastro')
         
         if senha != senha2:
+            messages.error(request, 'As senhas não são iguais')
             print('As senhas não são iguais')
             return redirect('cadastro')
         
@@ -31,6 +32,7 @@ def cadastro(request):
         user.save()
         
         print('Usuário criado com sucesso')
+        messages.success(request, 'Cadastro realizado com sucesso')
         return redirect('login')
     else:
         return render(request, 'usuarios/cadastro.html')
